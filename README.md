@@ -159,8 +159,8 @@ Internet-Draft   teep usecase for confidential computing       June 2022
 
           +--------------------------------------+
           | Confidential Computing Resource      |
-          |                       +--------+     |
-          |  +-------------+      |        |     |   +------------+
+          |                       +--------+     |   +------------+
+          |  +-------------+      |        |     |   |M/OC        |
           |  | TEE         |      | TEEP   |     |   | +-------+  |
           |  | +--------+  |  +---> Broker <----------->       |  |
           |  | | TEEP   |  |  |   |        |     |   | |  TAM  |  |
@@ -253,7 +253,7 @@ Internet-Draft   teep usecase for confidential computing       June 2022
    6.  TEEP Agent deploys TA and personalization data, then deploy UA in
        REE via TEEP Broker.
 
-   As for inform network users to develop their applications, the
+   As for informing network users to develop their applications, the
    mapping of UA, TA and implementations are shown in figure 2.  This
    document gathers the main hardware architectures that support
    confidential computing, which include TrustZone, SGX, SEV, CCA and
