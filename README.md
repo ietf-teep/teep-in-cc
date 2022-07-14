@@ -171,7 +171,7 @@ Internet-Draft   teep usecase for confidential computing       June 2022
           |  | |   TA   |  |      +-------+   |  |         |
           |  | |        |<-------->       |<--+  |         |
           |  | +--------+  |      |  UA   |      |   +-----V------+
-          |  +-------------+      |       |<---------> Data Owner |
+          |  +-------------+      |       |<---------> Data Owner |=network user 
           |                       +-------+      |   +------------+
           +--------------------------------------+
 
@@ -231,7 +231,7 @@ Internet-Draft   teep usecase for confidential computing       June 2022
 
    This use case refers to the case 1 of TEEP architecture.  If the
    network user provides this package, the process of TEEP is as follow.
-   Whenever PD is involved in a package, this package must be encrypted,
+   Whenever PD is involved in a package, this package must be encrypted (or during secure channel),
    similarly hereinafter.
 
    1.  Network user requests for confidential computing resource to the
@@ -277,7 +277,7 @@ Internet-Draft   teep usecase for confidential computing       June 2022
     |             | Virtual Machine| Virtual Machine|                |
     +-------------+----------------+----------------+----------------+
     |  Hardware   |    TrustZone   |    TrustZone,  |   SEV,CCA,TDX  |
-    | Architecture|                |  SEV, CCA, TDX |                |
+    | Architecture|      SGX       |  SEV, CCA, TDX |                |
     +-------------+----------------+----------------+----------------+
     |             |{att TEEP Agent,|{att TEEP Agent,|{att TEEP Agent,|
     |    Load     |    TA->TEE,    |  TA->Trsuted   | TA->Trsuted VM |
