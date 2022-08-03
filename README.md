@@ -1,5 +1,13 @@
+TEEP Working Group                                               P. Yang
+Internet-Draft                                                   M. Chen
+Intended status: Informational                                     L. Su
+Expires: 4 February 2023                                    China Mobile
+                                                                 T. Pang
+                                              Huawei Technology Co.,Ltd.
+                                                           3 August 2022
+
            TEEP Usecase for Confidential Computing in Network
-              draft-yang-teep-usecase-for-cc-in-network-00
+              draft-yang-teep-usecase-for-cc-in-network-01
 
 Abstract
 
@@ -32,18 +40,10 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 23 December 2022.
+   This Internet-Draft will expire on 4 February 2023.
 
-
-
-
-
-
-
-Yang, et al.            Expires 23 December 2022                [Page 1]
-
-Internet-Draft   teep usecase for confidential computing       June 2022
-
+Yang, et al.             Expires 4 February 2023                [Page 1]
+Internet-Draft   teep usecase for confidential computing     August 2022
 
 Copyright Notice
 
@@ -91,15 +91,8 @@ Table of Contents
    data and applications will be protected from illegal access or
    tampering.
 
-
-
-
-
-
-Yang, et al.            Expires 23 December 2022                [Page 2]
-
-Internet-Draft   teep usecase for confidential computing       June 2022
-
+Yang, et al.             Expires 4 February 2023                [Page 2]
+Internet-Draft   teep usecase for confidential computing     August 2022
 
    In the scenario of confidential computing in network, network users
    will attest the TEE in confidential computing and provision private
@@ -141,26 +134,13 @@ Internet-Draft   teep usecase for confidential computing       June 2022
    OC are introduced in this document.  Interactions of all components
    in this scenario are described in the following paragraphs.
 
-
-
-
-
-
-
-
-
-
-
-
-Yang, et al.            Expires 23 December 2022                [Page 3]
-
-Internet-Draft   teep usecase for confidential computing       June 2022
-
+Yang, et al.             Expires 4 February 2023                [Page 3]
+Internet-Draft   teep usecase for confidential computing     August 2022
 
           +--------------------------------------+
           | Confidential Computing Resource      |
-          |                       +--------+     |   +------------+
-          |  +-------------+      |        |     |   |M/OC        |
+          |                       +--------+     |
+          |  +-------------+      |        |     |   +------------+
           |  | TEE         |      | TEEP   |     |   | +-------+  |
           |  | +--------+  |  +---> Broker <----------->       |  |
           |  | | TEEP   |  |  |   |        |     |   | |  TAM  |  |
@@ -171,10 +151,9 @@ Internet-Draft   teep usecase for confidential computing       June 2022
           |  | |   TA   |  |      +-------+   |  |         |
           |  | |        |<-------->       |<--+  |         |
           |  | +--------+  |      |  UA   |      |   +-----V------+
-          |  +-------------+      |       |<---------> Data Owner |=network user 
+          |  +-------------+      |       |<---------> Data Owner |
           |                       +-------+      |   +------------+
           +--------------------------------------+
-
 
     Figure 1: notional architecture of confidential computing in network
 
@@ -206,12 +185,8 @@ Internet-Draft   teep usecase for confidential computing       June 2022
    implementation of specific network.  The connection between network
    user and UA (Untrusted Application) or TA depends on the
 
-
-
-Yang, et al.            Expires 23 December 2022                [Page 4]
-
-Internet-Draft   teep usecase for confidential computing       June 2022
-
+Yang, et al.             Expires 4 February 2023                [Page 4]
+Internet-Draft   teep usecase for confidential computing     August 2022
 
    implementation of application.  The connection between TAM, TEEP
    Broker and TEEP Agent refers to the TEEP protocol
@@ -231,7 +206,7 @@ Internet-Draft   teep usecase for confidential computing       June 2022
 
    This use case refers to the case 1 of TEEP architecture.  If the
    network user provides this package, the process of TEEP is as follow.
-   Whenever PD is involved in a package, this package must be encrypted (or during secure channel),
+   Whenever PD is involved in a package, this package must be encrypted,
    similarly hereinafter.
 
    1.  Network user requests for confidential computing resource to the
@@ -253,7 +228,7 @@ Internet-Draft   teep usecase for confidential computing       June 2022
    6.  TEEP Agent deploys TA and personalization data, then deploy UA in
        REE via TEEP Broker.
 
-   As for informing network users to develop their applications, the
+   As for inform network users to develop their applications, the
    mapping of UA, TA and implementations are shown in figure 2.  This
    document gathers the main hardware architectures that support
    confidential computing, which include TrustZone, SGX, SEV, CCA and
@@ -262,12 +237,8 @@ Internet-Draft   teep usecase for confidential computing       June 2022
    The brace means the operation steps to deploy packages.  The arrow
    means deploy package to a destination.
 
-
-
-Yang, et al.            Expires 23 December 2022                [Page 5]
-
-Internet-Draft   teep usecase for confidential computing       June 2022
-
+Yang, et al.             Expires 4 February 2023                [Page 5]
+Internet-Draft   teep usecase for confidential computing     August 2022
 
     +-------------+--------------------------------------------------+
     |Package Mode |                Case 1 (UA, TA, PD)               |
@@ -277,7 +248,7 @@ Internet-Draft   teep usecase for confidential computing       June 2022
     |             | Virtual Machine| Virtual Machine|                |
     +-------------+----------------+----------------+----------------+
     |  Hardware   |    TrustZone   |    TrustZone,  |   SEV,CCA,TDX  |
-    | Architecture|      SGX       |  SEV, CCA, TDX |                |
+    | Architecture|                |  SEV, CCA, TDX |                |
     +-------------+----------------+----------------+----------------+
     |             |{att TEEP Agent,|{att TEEP Agent,|{att TEEP Agent,|
     |    Load     |    TA->TEE,    |  TA->Trsuted   | TA->Trsuted VM |
@@ -285,7 +256,6 @@ Internet-Draft   teep usecase for confidential computing       June 2022
     |             |    UA->REE}    |    PD->TA,     | UA->Untrusted  |
     |             |                |    UA->REE}    |       VM}      |
     +-------------+----------------+----------------+----------------+
-
 
                   Figure 2: TEEP Implementation of Case 1
 
@@ -316,14 +286,8 @@ Internet-Draft   teep usecase for confidential computing       June 2022
 
    The mapping of UA, TA and implementations are shown in figure 3.
 
-
-
-
-
-Yang, et al.            Expires 23 December 2022                [Page 6]
-
-Internet-Draft   teep usecase for confidential computing       June 2022
-
+Yang, et al.             Expires 4 February 2023                [Page 6]
+Internet-Draft   teep usecase for confidential computing     August 2022
 
     +-------------+--------------------------------------------------+
     |Package Mode |   Case 2 (UA, TA) (PD), Case 3 (UA) (TA) (PD)    |
@@ -367,19 +331,8 @@ Internet-Draft   teep usecase for confidential computing       June 2022
 
    6.  TEEP agent decrypts this package and deploys TA and PD.
 
-
-
-
-
-
-
-
-
-
-Yang, et al.            Expires 23 December 2022                [Page 7]
-
-Internet-Draft   teep usecase for confidential computing       June 2022
-
+Yang, et al.             Expires 4 February 2023                [Page 7]
+Internet-Draft   teep usecase for confidential computing     August 2022
 
     +-------------+--------------------------------------------------+
     |Package Mode |               Case 4 (TA, PD) (UA)               |
@@ -396,7 +349,6 @@ Internet-Draft   teep usecase for confidential computing       June 2022
     |  Sequence   |   TA&PD->TEE}  | TA&PD->trusted | att TEEP Agent,|
     |             |                |   Container}   | TA->trusted VM}|
     +-------------+----------------+----------------+----------------+
-
 
                   Figure 4: TEEP Implementation of Case 4
 
@@ -423,19 +375,8 @@ Internet-Draft   teep usecase for confidential computing       June 2022
 
    6.  TEEP Agent decrypts this package and deploys TA and PD.
 
-
-
-
-
-
-
-
-
-
-Yang, et al.            Expires 23 December 2022                [Page 8]
-
-Internet-Draft   teep usecase for confidential computing       June 2022
-
+Yang, et al.             Expires 4 February 2023                [Page 8]
+Internet-Draft   teep usecase for confidential computing     August 2022
 
     +-------------+--------------------------------------------------+
     |Package Mode |                 Case 5 (TA, PD)                  |
@@ -475,23 +416,8 @@ Internet-Draft   teep usecase for confidential computing       June 2022
    5.  Network user establishes secure channel with TA (directly or via
        TAM) and transfers PD to it.
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-Yang, et al.            Expires 23 December 2022                [Page 9]
-
-Internet-Draft   teep usecase for confidential computing       June 2022
-
+Yang, et al.             Expires 4 February 2023                [Page 9]
+Internet-Draft   teep usecase for confidential computing     August 2022
 
     +-------------+--------------------------------------------------+
     |Package Mode |                 Case 6 (TA), (PD)                |
@@ -519,35 +445,27 @@ Internet-Draft   teep usecase for confidential computing       June 2022
               Pei, M., Tschofenig, H., Thaler, D., and D. Wheeler,
               "Trusted Execution Environment Provisioning (TEEP)
               Architecture", Work in Progress, Internet-Draft, draft-
-              ietf-teep-architecture-17, 19 April 2022,
+              ietf-teep-architecture-18, 11 July 2022,
               <https://www.ietf.org/archive/id/draft-ietf-teep-
-              architecture-17.txt>.
+              architecture-18.txt>.
 
    [I-D.ietf-teep-protocol]
               Tschofenig, H., Pei, M., Wheeler, D., Thaler, D., and A.
               Tsukamoto, "Trusted Execution Environment Provisioning
               (TEEP) Protocol", Work in Progress, Internet-Draft, draft-
-              ietf-teep-protocol-08, 7 March 2022,
+              ietf-teep-protocol-10, 28 July 2022,
               <https://www.ietf.org/archive/id/draft-ietf-teep-protocol-
-              08.txt>.
+              10.txt>.
 
    [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
-              Requirement Levels", BCP 14, RFC 2119,
-              DOI 10.17487/RFC2119, March 1997,
+              Requirement Levels", DOI 10.17487/RFC2119, BCP 14,
+              RFC 2119, March 1997,
               <https://www.rfc-editor.org/info/rfc2119>.
 
 5.2.  Informative Reference
 
-
-
-
-
-
-
-Yang, et al.            Expires 23 December 2022               [Page 10]
-
-Internet-Draft   teep usecase for confidential computing       June 2022
-
+Yang, et al.             Expires 4 February 2023               [Page 10]
+Internet-Draft   teep usecase for confidential computing     August 2022
 
    [CCC-White-Paper]
               Confidential Computing Consortium, "Confidential
@@ -585,3 +503,42 @@ Appendix A.  Submodules in TEEP Agent
    works as a runtime JIT compiler, TA could be deployed in a hardware
    independent way.  In this scenario, TA could be deployed in different
    hardware architecture without re-compiling.
+
+Authors' Addresses
+
+   Penglin Yang
+   China Mobile
+   32 Xuanwumen West Street, Xicheng District
+   Beijing
+   100053
+   China
+   Email: yangpenglin@chinamobile.com
+
+Yang, et al.             Expires 4 February 2023               [Page 11]
+Internet-Draft   teep usecase for confidential computing     August 2022
+
+   Meiling Chen
+   China Mobile
+   32 Xuanwumen West Street, Xicheng District
+   Beijing
+   100053
+   China
+   Email: chenmeiling@chinamobile.com
+
+   Li Su
+   China Mobile
+   32 Xuanwumen West Street, Xicheng District
+   Beijing
+   100053
+   China
+   Email: suli@chinamobile.com
+
+   Ting Pang
+   Huawei Technology Co.,Ltd.
+   127 Jinye Road, Yanta District
+   Xi'an
+   710077
+   China
+   Email: pangting@huawei.com
+
+Yang, et al.             Expires 4 February 2023               [Page 12]
