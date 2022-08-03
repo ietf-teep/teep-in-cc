@@ -1,11 +1,3 @@
-TEEP Working Group                                               P. Yang
-Internet-Draft                                                   M. Chen
-Intended status: Informational                                     L. Su
-Expires: 4 February 2023                                    China Mobile
-                                                                 T. Pang
-                                              Huawei Technology Co.,Ltd.
-                                                           3 August 2022
-
            TEEP Usecase for Confidential Computing in Network
               draft-yang-teep-usecase-for-cc-in-network-01
 
