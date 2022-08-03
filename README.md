@@ -42,9 +42,6 @@ Status of This Memo
 
    This Internet-Draft will expire on 4 February 2023.
 
-Yang, et al.             Expires 4 February 2023                [Page 1]
-Internet-Draft   teep usecase for confidential computing     August 2022
-
 Copyright Notice
 
    Copyright (c) 2022 IETF Trust and the persons identified as the
@@ -59,27 +56,7 @@ Copyright Notice
    described in Section 4.e of the Trust Legal Provisions and are
    provided without warranty as described in the Revised BSD License.
 
-Table of Contents
 
-   1.  Introduction  . . . . . . . . . . . . . . . . . . . . . . . .   2
-   2.  Terminology . . . . . . . . . . . . . . . . . . . . . . . . .   3
-     2.1.  Terms . . . . . . . . . . . . . . . . . . . . . . . . . .   3
-     2.2.  Requirements Language . . . . . . . . . . . . . . . . . .   3
-   3.  Notional Architecture of using confidential computing in
-           network . . . . . . . . . . . . . . . . . . . . . . . . .   3
-   4.  Usecases  . . . . . . . . . . . . . . . . . . . . . . . . . .   5
-     4.1.  UA, TA and PD are bundled as a package  . . . . . . . . .   5
-     4.2.  PD is a separate package, TA and UA are separate or
-           integrated  . . . . . . . . . . . . . . . . . . . . . . .   6
-     4.3.  TA and PD are bundled as a package, and UA is a separate
-           package . . . . . . . . . . . . . . . . . . . . . . . . .   7
-     4.4.  TA and PD as a package, no UA . . . . . . . . . . . . . .   8
-     4.5.  TA and PD are separate packages, no UA  . . . . . . . . .   9
-   5.  References  . . . . . . . . . . . . . . . . . . . . . . . . .  10
-     5.1.  Normative Reference . . . . . . . . . . . . . . . . . . .  10
-     5.2.  Informative Reference . . . . . . . . . . . . . . . . . .  10
-   Appendix A.  Submodules in TEEP Agent . . . . . . . . . . . . . .  11
-   Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  11
 
 1.  Introduction
 
@@ -134,8 +111,6 @@ Internet-Draft   teep usecase for confidential computing     August 2022
    OC are introduced in this document.  Interactions of all components
    in this scenario are described in the following paragraphs.
 
-Yang, et al.             Expires 4 February 2023                [Page 3]
-Internet-Draft   teep usecase for confidential computing     August 2022
 
           +--------------------------------------+
           | Confidential Computing Resource      |
@@ -185,8 +160,6 @@ Internet-Draft   teep usecase for confidential computing     August 2022
    implementation of specific network.  The connection between network
    user and UA (Untrusted Application) or TA depends on the
 
-Yang, et al.             Expires 4 February 2023                [Page 4]
-Internet-Draft   teep usecase for confidential computing     August 2022
 
    implementation of application.  The connection between TAM, TEEP
    Broker and TEEP Agent refers to the TEEP protocol
@@ -237,8 +210,6 @@ Internet-Draft   teep usecase for confidential computing     August 2022
    The brace means the operation steps to deploy packages.  The arrow
    means deploy package to a destination.
 
-Yang, et al.             Expires 4 February 2023                [Page 5]
-Internet-Draft   teep usecase for confidential computing     August 2022
 
     +-------------+--------------------------------------------------+
     |Package Mode |                Case 1 (UA, TA, PD)               |
@@ -286,8 +257,6 @@ Internet-Draft   teep usecase for confidential computing     August 2022
 
    The mapping of UA, TA and implementations are shown in figure 3.
 
-Yang, et al.             Expires 4 February 2023                [Page 6]
-Internet-Draft   teep usecase for confidential computing     August 2022
 
     +-------------+--------------------------------------------------+
     |Package Mode |   Case 2 (UA, TA) (PD), Case 3 (UA) (TA) (PD)    |
@@ -331,8 +300,6 @@ Internet-Draft   teep usecase for confidential computing     August 2022
 
    6.  TEEP agent decrypts this package and deploys TA and PD.
 
-Yang, et al.             Expires 4 February 2023                [Page 7]
-Internet-Draft   teep usecase for confidential computing     August 2022
 
     +-------------+--------------------------------------------------+
     |Package Mode |               Case 4 (TA, PD) (UA)               |
@@ -375,8 +342,6 @@ Internet-Draft   teep usecase for confidential computing     August 2022
 
    6.  TEEP Agent decrypts this package and deploys TA and PD.
 
-Yang, et al.             Expires 4 February 2023                [Page 8]
-Internet-Draft   teep usecase for confidential computing     August 2022
 
     +-------------+--------------------------------------------------+
     |Package Mode |                 Case 5 (TA, PD)                  |
@@ -416,8 +381,6 @@ Internet-Draft   teep usecase for confidential computing     August 2022
    5.  Network user establishes secure channel with TA (directly or via
        TAM) and transfers PD to it.
 
-Yang, et al.             Expires 4 February 2023                [Page 9]
-Internet-Draft   teep usecase for confidential computing     August 2022
 
     +-------------+--------------------------------------------------+
     |Package Mode |                 Case 6 (TA), (PD)                |
@@ -463,9 +426,6 @@ Internet-Draft   teep usecase for confidential computing     August 2022
               <https://www.rfc-editor.org/info/rfc2119>.
 
 5.2.  Informative Reference
-
-Yang, et al.             Expires 4 February 2023               [Page 10]
-Internet-Draft   teep usecase for confidential computing     August 2022
 
    [CCC-White-Paper]
               Confidential Computing Consortium, "Confidential
@@ -514,9 +474,6 @@ Authors' Addresses
    China
    Email: yangpenglin@chinamobile.com
 
-Yang, et al.             Expires 4 February 2023               [Page 11]
-Internet-Draft   teep usecase for confidential computing     August 2022
-
    Meiling Chen
    China Mobile
    32 Xuanwumen West Street, Xicheng District
@@ -541,4 +498,3 @@ Internet-Draft   teep usecase for confidential computing     August 2022
    China
    Email: pangting@huawei.com
 
-Yang, et al.             Expires 4 February 2023               [Page 12]
