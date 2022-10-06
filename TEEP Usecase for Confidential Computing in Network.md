@@ -3,92 +3,42 @@
 
 Abstract
 
-   Confidential computing is the protection of data in use by performing
-   computation in a hardware-based Trusted Execution Environment.
-   Confidential computing could provide integrity and confidentiality
-   for users who want to run application and process data in that
-   environment.  When confidential computing is used in network like MEC
-   and CAN which provide computing resource to network users, TEEP
-   protocol could be used to provision network user's data and
-   application in TEE environment in confidential computing resource.
-   This document focuses on using TEEP to provision network user's data
-   and application in confidential computing in such network.  This
-   document is a use case and extension of TEEP and could provide
-   guidance for MEC, CAN and other scenarios to use confidential
-   computing.
+Confidential computing is the protection of data in use by performing computation in a hardware-based Trusted Execution Environment. Confidential computing could provide integrity and confidentiality for users who want to run applications and process data in that environment. When confidential computing is used in scenarios which need network to provision users' data and applications in the TEE environment，TEEP architecture[I-D.ietf-teep-architecture] and protocol[] could be used. This document focuses on using TEEP to provision network users' data and applications in confidential computing. This document is a use case and extension of TEEP and could provide guidance for cloud computing, MEC[], CAN[] and other scenarios to use confidential computing in network.
 
 Status of This Memo
 
    This Internet-Draft is submitted in full conformance with the
    provisions of BCP 78 and BCP 79.
 
-   Internet-Drafts are working documents of the Internet Engineering
-   Task Force (IETF).  Note that other groups may also distribute
-   working documents as Internet-Drafts.  The list of current Internet-
-   Drafts is at https://datatracker.ietf.org/drafts/current/.
+   Internet-Drafts are working documents of the Internet Engineering Task Force (IETF). Note that other groups may also distribute working documents as Internet-Drafts.  The list of current Internet-Drafts is at https://datatracker.ietf.org/drafts/current/.
 
-   Internet-Drafts are draft documents valid for a maximum of six months
-   and may be updated, replaced, or obsoleted by other documents at any
-   time.  It is inappropriate to use Internet-Drafts as reference
-   material or to cite them other than as "work in progress."
-
-   This Internet-Draft will expire on 4 February 2023.
+   Internet-Drafts are draft documents valid for a maximum of six months and may be updated, replaced, or obsoleted by other documents at any time.  It is inappropriate to use Internet-Drafts as reference
+   material or to cite them other than as "work in progress." This Internet-Draft will expire on 4 February 2023.
 
 Copyright Notice
 
-   Copyright (c) 2022 IETF Trust and the persons identified as the
-   document authors.  All rights reserved.
+   Copyright (c) 2022 IETF Trust and the persons identified as the document authors.  All rights reserved.
 
-   This document is subject to BCP 78 and the IETF Trust's Legal
-   Provisions Relating to IETF Documents (https://trustee.ietf.org/
-   license-info) in effect on the date of publication of this document.
-   Please review these documents carefully, as they describe your rights
-   and restrictions with respect to this document.  Code Components
-   extracted from this document must include Revised BSD License text as
-   described in Section 4.e of the Trust Legal Provisions and are
-   provided without warranty as described in the Revised BSD License.
-
+   This document is subject to BCP 78 and the IETF Trust's Legal Provisions Relating to IETF Documents (https://trustee.ietf.org/license-info) in effect on the date of publication of this document. Please review these documents carefully, as they describe your rights and restrictions with respect to this document. Code Components extracted from this document must include Revised BSD License text as described in Section 4.e of the Trust Legal Provisions and are provided without warranty as described in the Revised BSD License.
 
 
 1.  Introduction
 
-   The Confidential Computing Consortium defined the concept of
-   confidential computing as the protection of data in use by performing
-   computation in a hardware-based Trusted Execution Environment"
-   [CCC-White-Paper].  In detail, CPU with confidential computing
-   feature could generate an isolated hardware-protected area, in which
-   data and applications will be protected from illegal access or
-   tampering.
+The Confidential Computing Consortium defined the concept of confidential computing as the protection of data in use by performing computation in a hardware-based Trusted Execution Environment"[CCC-White-Paper]. In detail, computing unit with confidential computing feature could generate an isolated hardware-protected area, in which data and applications will be protected from illegal access or tampering. When using network to provision confidential computing environment, users need to attest and deploy their data and applications in the TEE environment inside confidential computing device. 
 
-Yang, et al.             Expires 4 February 2023                [Page 2]
-Internet-Draft   teep usecase for confidential computing     August 2022
+TEEP architecture defined the design and standardization of a protocol for managing the lifecycle of trusted applications running inside a TEE.  In confidential computing, the TEE can also be provisioned and managed by TEEP protocol.
 
-   In the scenario of confidential computing in network, network users
-   will attest the TEE in confidential computing and provision private
-   data and applications to that TEE by network.  This network could be
-   a MEC[MEC], CAN or other network that provide computing resource to
-   users.
-
-   TEEP architecture [I-D.ietf-teep-architecture] defined the design and
-   standardization of a protocol for managing the lifecycle of trusted
-   applications running inside a TEE.  In confidential computing, this
-   TEE can also be provisioned and managed by TEEP protocol.
-
-   This document illustrates how a network user uses the TEEP protocol
-   to provision its private data in confidential computing resource.
-   The intended audiences for this use case are network users and
-   operators who are interested in using confidential computing in
-   network.
+This document illustrates how a network user uses the TEEP protocol to provision its private data and applications in confidential computing device. The intended audiences for this use case are network users and operators who are interested in using confidential computing in network.
 
 2.  Terminology
 
 2.1.  Terms
 
-   TA: Trusted Application
+  - TA: Trusted Application
 
-   UA: Untrusted Application
+  - UA: Untrusted Application
 
-   PD: Personalization Data
+  - PD: Personalization Data
 
 2.2.  Requirements Language
 
@@ -96,12 +46,9 @@ Internet-Draft   teep usecase for confidential computing     August 2022
    "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this
    document are to be interpreted as described in RFC 2119 [RFC2119].
 
-3.  Notional Architecture of using confidential computing in network
+3.  Notional Architecture of Confidential Computing in Network
 
-   As shown in figure 1 is the architecture of using confidential
-   computing in network.  Two new components Network User and Network M/
-   OC are introduced in this document.  Interactions of all components
-   in this scenario are described in the following paragraphs.
+   As shown in figure 1 is the architecture of confidential computing in network. Two new components Network User and Network M/OC are introduced in this document. Interactions of all components in this scenario are described in the following paragraphs.
 
 
           +--------------------------------------+
