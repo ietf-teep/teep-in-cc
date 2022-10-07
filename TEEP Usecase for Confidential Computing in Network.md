@@ -26,7 +26,7 @@ Copyright Notice
 
 The Confidential Computing Consortium defined the concept of confidential computing as the protection of data in use by performing computation in a hardware-based Trusted Execution Environment"[CCC-White-Paper]. In detail, computing unit with confidential computing feature could generate an isolated hardware-protected area, in which data and applications will be protected from illegal access or tampering. When using network to provision confidential computing environment, users need to attest and deploy their data and applications in the TEE environment inside confidential computing device. 
 
-TEEP architecture defined the design and standardization of a protocol for managing the lifecycle of trusted applications running inside a TEE.  In confidential computing, the TEE can also be provisioned and managed by TEEP protocol.
+The TEEP architecture defined the design and standardization of a protocol for managing the lifecycle of trusted applications running inside a TEE.  In confidential computing, the TEE can also be provisioned and managed by TEEP protocol.
 
 This document illustrates how a network user uses the TEEP protocol to provision its private data and applications in confidential computing device. The intended audiences for this use case are network users and operators who are interested in using confidential computing in network.
 
@@ -48,13 +48,13 @@ This document illustrates how a network user uses the TEEP protocol to provision
 
 3.  Notional Architecture of Confidential Computing in Network
 
-   As shown in figure 1 is the architecture of confidential computing in network. Two new components Network User and Network M/OC are introduced in this document. Interactions of all components in this scenario are described in the following paragraphs.
+   Figure 1 is the architecture of confidential computing in network. Two new components Network User and Network M/OC are introduced in this document. Interactions of all components in this scenario are described in the following paragraphs.
 
 
           +--------------------------------------+
-          | Confidential Computing Resource      |
-          |                       +--------+     |
-          |  +-------------+      |        |     |   +------------+
+          | Confidential Computing Device        |
+          |                       +--------+     |   +------------+
+          |  +-------------+      |        |     |   |Network M/OC|
           |  | TEE         |      | TEEP   |     |   | +-------+  |
           |  | +--------+  |  +---> Broker <----------->       |  |
           |  | | TEEP   |  |  |   |        |     |   | |  TAM  |  |
@@ -65,44 +65,21 @@ This document illustrates how a network user uses the TEEP protocol to provision
           |  | |   TA   |  |      +-------+   |  |         |
           |  | |        |<-------->       |<--+  |         |
           |  | +--------+  |      |  UA   |      |   +-----V------+
-          |  +-------------+      |       |<---------> Data Owner |
-          |                       +-------+      |   +------------+
-          +--------------------------------------+
+          |  +-------------+      |       |<--------->Network User|
+          |                       +-------+      |   | (Package)  |
+          +--------------------------------------+   +------------+
 
     Figure 1: notional architecture of confidential computing in network
 
-   *  Network user possesses private data and application that need to
-      be deployed in confidential computing resource.  For example in
-      MEC, the autonomous vehicles could deploy private application and
-      data to confidential computing resource to calculate on-vehicle
-      and destination road information without knowing by MEC platform.
+   *  Network user: Network user possesses personalization data and application that need to be deployed on confidential computing device. For example in MEC, the autonomous vehicles could deploy private application and data on confidential computing device to calculate on-vehicle and destination road information without knowing by MEC platform.
 
-   *  Network Management/Orchestration Center exists in the management
-      and orchestration layer of network.  Network user will use the M/
-      OC to request for computing resource.  The TAM is inside the M/OC
-      to provide management function to TEEP agent via TEEP broker.
+   *  Network Management/Orchestration Center: MO/C exists in the management and orchestration layer of network.  Network user uses the M/OC to request for computing resource.  The TAM is inside the M/OC to provide management function to TEEP agent via TEEP broker.
 
-   *  Confidential Computing Resource is composed by confidential
-      computing devices that connected by the network and can provide
-      service to network user.
+   *  Confidential Computing Device: Confidential Computing Device is connected by the network and can provide computing service to network user.
 
-   *  Package which will be mentioned in the following Usecases section
-      is a unit that is signed or encrypted by Data Owner and could be
-      deployed in TEE/REE or treated as application data.  TA (Trusted
-      Application) in confidential computing could be an application, or
-      packaged with other components like library, TEE shim or even
-      Guest OS.  The specific package of confidential computing
-      application could refers to the wihte paper of common terminology
-      of CCC(reference needed).
+   *  Package: Package is a unit that is signed or encrypted by Data Owner and could be deployed on TEE/REE or treated as application data.  TA (Trusted Application) in confidential computing could be an application, or packaged with other components like library, TEE shim or even Guest OS. The specific package of confidential computing application could refers to the white paper of common terminology of CCC(reference needed).
 
-   The connection between network user and M/OC depends on the
-   implementation of specific network.  The connection between network
-   user and UA (Untrusted Application) or TA depends on the
-
-
-   implementation of application.  The connection between TAM, TEEP
-   Broker and TEEP Agent refers to the TEEP protocol
-   [I-D.ietf-teep-protocol].
+The connection between network user and M/OC depends on the implementation of specific network. The connection between network user and UA (Untrusted Application) or TA depends on the implementation of application. The connection between TAM, TEEP Broker and TEEP Agent refers to the TEEP protocol[I-D.ietf-teep-protocol].
 
 4.  Usecases
 
