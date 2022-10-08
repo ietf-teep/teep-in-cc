@@ -77,54 +77,31 @@ This document illustrates how a network user uses the TEEP protocol to provision
 
    *  Confidential Computing Device: Confidential Computing Device is connected by the network and can provide computing service to network user.
 
-   *  Package: Package is a unit that is signed or encrypted by Data Owner and could be deployed on TEE/REE or treated as application data.  TA (Trusted Application) in confidential computing could be an application, or packaged with other components like library, TEE shim or even Guest OS. The specific package of confidential computing application could refers to the white paper of common terminology of CCC(reference needed).
+   *  Package: Package is a unit that is signed or encrypted by Data Owner and could be deployed on TEE/REE or treated as application data.  TA (Trusted Application) in confidential computing could be an application, or packaged with other components like library, TEE shim or even Guest OS. The specific package of confidential computing could refers to the white paper of common terminology of CCC(reference needed).
 
 The connection between network user and M/OC depends on the implementation of specific network. The connection between network user and UA (Untrusted Application) or TA depends on the implementation of application. The connection between TAM, TEEP Broker and TEEP Agent refers to the TEEP protocol[I-D.ietf-teep-protocol].
 
 4.  Usecases
 
-   The basic process of how a network user uses confidential computing
-   is shown below.  In confidential computing, the bundle of an UA, TA,
-   and PD (Personalization Data) refers to case 1,2,3,4 of TEEP
-   architecture section 4.4.  Case 5 and 6 are new cases that possible
-   in implementation.  At present, the main instances types exist in
-   industry of confidential computing are confidential
-   process,confidential container and confidential VM.
+The basic process of how a network user utilizes confidential computing is shown below.  In confidential computing, the bundle of an UA, TA, and PD (Personalization Data) refers to case 1,2,3,4 of TEEP architecture section 4.4.  Case 5 and 6 are new cases that possible in implementation.  At present, the main instances types exist in industry of confidential computing are confidential process,confidential container and confidential VM.
 
-4.1.  UA, TA and PD are bundled as a package
+4.1.  UA, TA and PD are bundled as one package
 
-   This use case refers to the case 1 of TEEP architecture.  If the
-   network user provides this package, the process of TEEP is as follow.
-   Whenever PD is involved in a package, this package must be encrypted,
-   similarly hereinafter.
+This use case refers to the case 1 of TEEP architecture.  If the network user provides this package, the process of TEEP is as follow. Whenever PD is involved in a package, this package must be encrypted, similarly hereinafter.
 
-   1.  Network user requests for confidential computing resource to the
-       network M/OC.
+   1.  Network user requests for confidential computing resource to the network M/OC.
 
-   2.  TAM in M/OC orchestrates confidential computing device to
-       undertake the request.
+   2.  M/OC orchestrates confidential computing device to undertake the request.
 
-   3.  TAM requests remote attestation to the TEEP Agent, TEEP Agent
-       then response the evidence to TAM.  The TAM works as the relying
-       party and forward the attestation result to network user.
+   3.  TAM requests remote attestation to the TEEP Agent, TEEP Agent then sends the evidence to TAM.  The TAM works as relying party in RATs architecture[].
 
-   4.  After verification, the network user transfers the package to TAM
-       and let TAM to transfer the package to TEEP Agent.
+   4.  After verification, the network user transfers the package to TAM and let TAM to transfer the package to TEEP Agent.
 
-   5.  Network user establishes secure channel with TEEP agent via TAM,
-       and transfers decryption key to TEEP Agent.
+   5.  Network user establishes secure channel with TEEP agent, and transfers decryption key to TEEP Agent.
+   
+   6.  TEEP Agent deploys TA and personalization data, then deploy UA in REE via TEEP Broker.
 
-   6.  TEEP Agent deploys TA and personalization data, then deploy UA in
-       REE via TEEP Broker.
-
-   As for inform network users to develop their applications, the
-   mapping of UA, TA and implementations are shown in figure 2.  This
-   document gathers the main hardware architectures that support
-   confidential computing, which include TrustZone, SGX, SEV, CCA and
-   TDX.
-
-   The brace means the operation steps to deploy packages.  The arrow
-   means deploy package to a destination.
+   As for inform network users to develop their applications and data, the mapping of UA, TA and implementations are shown in figure 2.  This document gathers the main hardware architectures that support confidential computing, which include TrustZone[ref], SGX[ref], SEV-SNP[ref], CCA[ref] and TDX[ref]. The brace means the operation steps to deploy packages. The arrow means deploy package to a destination.
 
 
     +-------------+--------------------------------------------------+
@@ -134,8 +111,9 @@ The connection between network user and M/OC depends on the implementation of sp
     |    Type     |   Physical or  |  Physical or   |       VM       |
     |             | Virtual Machine| Virtual Machine|                |
     +-------------+----------------+----------------+----------------+
-    |  Hardware   |    TrustZone   |    TrustZone,  |   SEV,CCA,TDX  |
-    | Architecture|                |  SEV, CCA, TDX |                |
+    |  Hardware   |                |    TrustZone,  |                |
+    | Architecture|    TrustZone   |  SEV-SNP, CCA, | SEV-SNP,CCA,TDX|      
+    |             |                |      TDX       |                |
     +-------------+----------------+----------------+----------------+
     |             |{att TEEP Agent,|{att TEEP Agent,|{att TEEP Agent,|
     |    Load     |    TA->TEE,    |  TA->Trsuted   | TA->Trsuted VM |
@@ -153,23 +131,15 @@ The connection between network user and M/OC depends on the implementation of sp
    integrated as a package.  If the network user provides packages like
    this, the process of TEEP is as follow.
 
-   1.  Network user requests for confidential computing resource to the
-       network M/OC.
+   1.  Network user requests for confidential computing resource to the network M/OC.
 
-   2.  TAM in M/OC orchestrates confidential computing device to
-       undertake the request.
+   2.  M/OC orchestrates confidential computing device to undertake the request.
 
-   3.  Network user transfers UA and TA to confidential computing
-       resource via TAM.  TAM then deploys these two applications in REE
-       and TEE respectively.  (In SGX, UA must be deployed first, then
-       let the UA to deploy TA in SGX.)
+   3.  Network user transfers UA and TA to confidential computing device via TAM.  TAM then deploys these two applications in REE and TEE respectively.  (In SGX, UA must be deployed first, then let the UA to load TA in SGX.)
 
-   4.  TAM requests remote attestation to the TEEP Agent, TEEP Agent
-       then response the evidence to TAM.  The TAM works as the relying
-       party and forward the attestation result to network user.
+   4.  TAM requests remote attestation to the TEEP Agent, TEEP Agent then sends the evidence to TAM.  The TAM works as the relying party in RATs architecture.
 
-   5.  Network user establishes secure channel with TA (via UA or via
-       TAM or directly), and deploys personalization data to the TA.
+   5.  Network user establishes secure channel with TA, and deploys personalization data to the TA.
 
    The mapping of UA, TA and implementations are shown in figure 3.
 
@@ -181,8 +151,9 @@ The connection between network user and M/OC depends on the implementation of sp
     |    Type     |   Physical or  |  Physical or   |       VM       |
     |             | Virtual Machine| Virtual Machine|                |
     +-------------+----------------+----------------+----------------+
-    |  Hardware   |    TrustZone,  | TrustZone, SGX,|   SEV,CCA,TDX  |
-    | Architecture|      SGX       |  SEV, CCA, TDX |                |
+    |  Hardware   |    TrustZone,  | TrustZone, SGX,|                |
+    | Architecture|      SGX       |  SEV-SNP, CCA, |   SEV,CCA,TDX  |
+    |             |                |      TDX       |                |
     +-------------+----------------+----------------+----------------+
     |             |   {TA->TEE,    |    {UA->REE,   |{UA->untrusted  |
     |             | att TEEP Agent,|  TA->trusted   |      VM,       |
@@ -203,7 +174,7 @@ The connection between network user and M/OC depends on the implementation of sp
    2.  TAM in M/OC orchestrates confidential computing device to
        undertake the request.
 
-   3.  Network user transfers UA to TAM.
+   3.  Network user deploys UA in REE.
 
    4.  TAM requests remote attestation to the TEEP Agent, TEEP Agent
        then response the evidence to TAM.  The TAM works as the relying
@@ -224,8 +195,9 @@ The connection between network user and M/OC depends on the implementation of sp
     |    Type     |   Physical or  |  Physical or   |       VM       |
     |             | Virtual Machine| Virtual Machine|                |
     +-------------+----------------+----------------+----------------+
-    |  Hardware   |    TrustZone,  | TrustZone, SGX,|   SEV,CCA,TDX  |
-    | Architecture|      SGX       |  SEV, CCA, TDX |                |
+    |  Hardware   |    TrustZone,  | TrustZone, SGX,|                |
+    | Architecture|      SGX       |  SEV-SNP, CCA, |   SEV,CCA,TDX  |           |  
+    |             |                |      TDX       |                |
     +-------------+----------------+----------------+----------------+
     |             |   {UA->REE,    |    {UA->REE,   | {UA->untrusted |
     |    Load     | att TEEP Agent,| att TEEP Agent,|      VM,       |
@@ -315,10 +287,18 @@ The connection between network user and M/OC depends on the implementation of sp
     +-------------+----------------+----------------+----------------+
 
                   Figure 6: TEEP Implementation of Case 6
+5. IANA Considerations
+This document does not require actions by IANA. 
 
-5.  References
+6. Security Considerations
+Besides the security considerations in TEEP architecture, there is no more security and privacy issues to consider.
 
-5.1.  Normative Reference
+7. Acknowledgement
+TBD.
+
+8.  References
+
+8.1.  Normative Reference
 
    [I-D.ietf-teep-architecture]
               Pei, M., Tschofenig, H., Thaler, D., and D. Wheeler,
@@ -341,7 +321,7 @@ The connection between network user and M/OC depends on the implementation of sp
               RFC 2119, March 1997,
               <https://www.rfc-editor.org/info/rfc2119>.
 
-5.2.  Informative Reference
+8.2.  Informative Reference
 
    [CCC-White-Paper]
               Confidential Computing Consortium, "Confidential
@@ -379,6 +359,8 @@ Appendix A.  Submodules in TEEP Agent
    works as a runtime JIT compiler, TA could be deployed in a hardware
    independent way.  In this scenario, TA could be deployed in different
    hardware architecture without re-compiling.
+ 
+ Appendix B. Examples of 
 
 Authors' Addresses
 
