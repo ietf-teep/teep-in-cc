@@ -3,7 +3,7 @@
 
 Abstract
 
-Confidential computing is the protection of data in use by performing computation in a hardware-based Trusted Execution Environment. Confidential computing could provide integrity and confidentiality for users who want to run applications and process data in that environment. When confidential computing is used in scenarios which need network to provision users' data and applications in the TEE environment，TEEP architecture[I-D.ietf-teep-architecture] and protocol[] could be used. This document focuses on using TEEP to provision network users' data and applications in confidential computing. This document is a use case and extension of TEEP and could provide guidance for cloud computing, MEC[], CAN[] and other scenarios to use confidential computing in network.
+Confidential computing is the protection of data in use by performing computation in a hardware-based Trusted Execution Environment. Confidential computing could provide integrity and confidentiality for users who want to run applications and process data in that environment. When confidential computing is used in scenarios which need network to provision users' data and applications in the TEE environment，TEEP architecture[I-D.ietf-teep-architecture] and protocol[] could be used. This document focuses on using TEEP to provision network users' data and applications in confidential computing. This document is a use case and extension of TEEP and could provide guidance for cloud computing, MEC[] and other scenarios to use confidential computing in network.
 
 Status of This Memo
 
