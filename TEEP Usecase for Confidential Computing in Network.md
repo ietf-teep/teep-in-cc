@@ -135,24 +135,24 @@ In this case, UA, TA and PD are bundled as a package. This package is bundled by
    The mapping of UA, TA and implementations are shown in figure 3.
 
 
-+-------------+--------------------------------------------------+
-|Package Mode |               Case 2 (UA, TA) (PD)               |
-+-------------+----------------+----------------+----------------+
-|             |  Confidential  |  Confidential  |                |
-|  Instance   |   Process in   |  Container in  |  Confidential  |
-|    Type     |   Physical or  |  Physical or   |       VM       |
-|             | Virtual Machine| Virtual Machine|                |
-+-------------+----------------+----------------+----------------+
-|  Hardware   |    TrustZone,  | TrustZone, SGX,|    SEV, CCA    |
-| Architecture|      SGX       |  SEV-SNP, CCA, |    TDX, CSV    |
-|             |                |    TDX, CSV    |                |
-+-------------+----------------+----------------+----------------+
-|             |   {UA->REE,    |    {UA->REE,   |   {UA->REE,    |
-|             |TA->Confidential|TA->Confidential|TA->Confidential|
-|    Load     |    Process,    |   Container,   |       VM,      |
-|  Sequence   | att TEEP Agent,| att TEEP Agent,| att TEEP Agent,|
-|             |    PD->TA}     |    PD->TA}     |     PD->TA}    |
-+-------------+----------------+----------------+----------------+
+           +-------------+--------------------------------------------------+
+           |Package Mode |               Case 2 (UA, TA) (PD)               |
+           +-------------+----------------+----------------+----------------+
+           |             |  Confidential  |  Confidential  |                |
+           |  Instance   |   Process in   |  Container in  |  Confidential  |
+           |    Type     |   Physical or  |  Physical or   |       VM       |
+           |             | Virtual Machine| Virtual Machine|                |
+           +-------------+----------------+----------------+----------------+
+           |  Hardware   |    TrustZone,  | TrustZone, SGX,|    SEV, CCA    |
+           | Architecture|      SGX       |  SEV-SNP, CCA, |    TDX, CSV    |
+           |             |                |    TDX, CSV    |                |
+           +-------------+----------------+----------------+----------------+
+           |             |   {UA->REE,    |    {UA->REE,   |   {UA->REE,    |
+           |             |TA->Confidential|TA->Confidential|TA->Confidential|
+           |    Load     |    Process,    |   Container,   |       VM,      |
+           |  Sequence   | att TEEP Agent,| att TEEP Agent,| att TEEP Agent,|
+           |             |    PD->TA}     |    PD->TA}     |     PD->TA}    |
+           +-------------+----------------+----------------+----------------+
 
                  Figure 3: TEEP Implementation of Case 2
 
@@ -173,24 +173,24 @@ In this case, UA, TA and PD are bundled as a package. This package is bundled by
    6.  After verification, Network User works as Relying Party to receive the attestation result. If positive, Network User establishes secure channel with TA and transfers PD to it.
 
 
-+-------------+--------------------------------------------------+
-|Package Mode |        Case 3 (TA),(PD) or (TA),(PD),(UA)        |
-+-------------+----------------+----------------+----------------+
-|             |  Confidential  |  Confidential  |                |
-|  Instance   |   Process in   |  Container in  |  Confidential  |
-|    Type     |   Physical or  |  Physical or   |       VM       |
-|             | Virtual Machine| Virtual Machine|                |
-+-------------+----------------+----------------+----------------+
-|  Hardware   |    TrustZone,  | TrustZone, SGX,|    SEV, CCA    |
-| Architecture|      SGX       |  SEV-SNP, CCA, |    TDX, CSV    |
-|             |                |    TDX, CSV    |                |
-+-------------+----------------+----------------+----------------+
-|    Load     |    {UA->REE,   |    {UA->REE,   |   {UA->REE,    |
-|  Sequence   |TA->Confidential|TA->Confidential|TA->Confidential|
-|             |    Process,    |    Container   |       VM,      |
-|             | att TEEP Agent,| att TEEP Agent,| att TEEP Agent,|
-|             |    PD->TA}     |    PD->TA}     |    PD->TA}     |
-+-------------+----------------+----------------+----------------+
+           +-------------+--------------------------------------------------+
+           |Package Mode |        Case 3 (TA),(PD) or (TA),(PD),(UA)        |
+           +-------------+----------------+----------------+----------------+
+           |             |  Confidential  |  Confidential  |                |
+           |  Instance   |   Process in   |  Container in  |  Confidential  |
+           |    Type     |   Physical or  |  Physical or   |       VM       |
+           |             | Virtual Machine| Virtual Machine|                |
+           +-------------+----------------+----------------+----------------+
+           |  Hardware   |    TrustZone,  | TrustZone, SGX,|    SEV, CCA    |
+           | Architecture|      SGX       |  SEV-SNP, CCA, |    TDX, CSV    |
+           |             |                |    TDX, CSV    |                |
+           +-------------+----------------+----------------+----------------+
+           |    Load     |    {UA->REE,   |    {UA->REE,   |   {UA->REE,    |
+           |  Sequence   |TA->Confidential|TA->Confidential|TA->Confidential|
+           |             |    Process,    |    Container   |       VM,      |
+           |             | att TEEP Agent,| att TEEP Agent,| att TEEP Agent,|
+           |             |    PD->TA}     |    PD->TA}     |    PD->TA}     |
+           +-------------+----------------+----------------+----------------+
 
                   Figure 4: TEEP Implementation of Case 3
 
@@ -209,24 +209,24 @@ In this case, UA, TA and PD are bundled as a package. This package is bundled by
    5.  After verification, Network User works as Relying Party to receive the attestation result. If positive, Network User establishes secure channel with TEEP Agent and transfers TA and PD package to TEEP Agent.
 
 
-+-------------+--------------------------------------------------+
-|Package Mode |      Case 4 (TA, PD) (UA) or (TA, PD)            |
-+-------------+----------------+----------------+----------------+
-|             |  Confidential  |  Confidential  |                |
-|  Instance   |   Process in   |  Container in  |  Confidential  |
-|    Type     |   Physical or  |  Physical or   |       VM       |
-|             | Virtual Machine| Virtual Machine|                |
-+-------------+----------------+----------------+----------------+
-|  Hardware   |    TrustZone,  | TrustZone, SGX,|    SEV, CCA    |
-| Architecture|      SGX       |  SEV-SNP, CCA, |    TDX, CSV    |
-|             |                |    TDX, CSV    |                |
-+-------------+----------------+----------------+----------------+
-|             |   {UA->REE,    |    {UA->REE,   |    {UA->REE,   |
-|    Load     | att TEEP Agent,| att TEEP Agent,| att TEEP Agent,|
-|  Sequence   |   (TA,PD)->    |   (TA,PD)->    |    (TA,PD)->   |
-|             |  Confidential  |  Confidential  |  Confidential  |
-|             |   Process}     |   Container}   |       VM}      | 
-+-------------+----------------+----------------+----------------+
+           +-------------+--------------------------------------------------+
+           |Package Mode |      Case 4 (TA, PD) (UA) or (TA, PD)            |
+           +-------------+----------------+----------------+----------------+
+           |             |  Confidential  |  Confidential  |                |
+           |  Instance   |   Process in   |  Container in  |  Confidential  |
+           |    Type     |   Physical or  |  Physical or   |       VM       |
+           |             | Virtual Machine| Virtual Machine|                |
+           +-------------+----------------+----------------+----------------+
+           |  Hardware   |    TrustZone,  | TrustZone, SGX,|    SEV, CCA    |
+           | Architecture|      SGX       |  SEV-SNP, CCA, |    TDX, CSV    |
+           |             |                |    TDX, CSV    |                |
+           +-------------+----------------+----------------+----------------+
+           |             |   {UA->REE,    |    {UA->REE,   |    {UA->REE,   |
+           |    Load     | att TEEP Agent,| att TEEP Agent,| att TEEP Agent,|
+           |  Sequence   |   (TA,PD)->    |   (TA,PD)->    |    (TA,PD)->   |
+           |             |  Confidential  |  Confidential  |  Confidential  |
+           |             |   Process}     |   Container}   |       VM}      | 
+           +-------------+----------------+----------------+----------------+
 
                   Figure 5: TEEP Implementation of Case 4
 
@@ -245,24 +245,24 @@ In this case, UA, TA and PD are bundled as a package. This package is bundled by
    5.  TA decrypts the PD and UA package inside TEE.
 
 
-+-------------+--------------------------------------------------+
-|Package Mode |               Case 5 (UA, PD) (TA)               |
-+-------------+----------------+----------------+----------------+
-|             |  Confidential  |  Confidential  |                |
-|  Instance   |   Process in   |  Container in  |  Confidential  |
-|    Type     |   Physical or  |  Physical or   |       VM       |
-|             | Virtual Machine| Virtual Machine|                |
-+-------------+----------------+----------------+----------------+
-|  Hardware   |    TrustZone,  | TrustZone, SGX,|    SEV, CCA    |
-| Architecture|      SGX       |  SEV-SNP, CCA, |    TDX, CSV    |
-|             |                |    TDX, CSV    |                |
-+-------------+----------------+----------------+----------------+
-|             |{att TEEP Agent,|{att TEEP Agent,|{att TEEP Agent,|
-|    Load     |      TA->      |      TA->      |      TA->      |
-|  Sequence   |  Confidential  |  Confidential  |  Confidential  |
-|             |    Process,    |   Container,   |      VM,       |
-|             |  (UA,PD)->TA}  |  (UA,PD)->TA}  |  (UA,PD)->TA}  |
-+-------------+----------------+----------------+----------------+
+           +-------------+--------------------------------------------------+
+           |Package Mode |               Case 5 (UA, PD) (TA)               |
+           +-------------+----------------+----------------+----------------+
+           |             |  Confidential  |  Confidential  |                |
+           |  Instance   |   Process in   |  Container in  |  Confidential  |
+           |    Type     |   Physical or  |  Physical or   |       VM       |
+           |             | Virtual Machine| Virtual Machine|                |
+           +-------------+----------------+----------------+----------------+
+           |  Hardware   |    TrustZone,  | TrustZone, SGX,|    SEV, CCA    |
+           | Architecture|      SGX       |  SEV-SNP, CCA, |    TDX, CSV    |
+           |             |                |    TDX, CSV    |                |
+           +-------------+----------------+----------------+----------------+
+           |             |{att TEEP Agent,|{att TEEP Agent,|{att TEEP Agent,|
+           |    Load     |      TA->      |      TA->      |      TA->      |
+           |  Sequence   |  Confidential  |  Confidential  |  Confidential  |
+           |             |    Process,    |   Container,   |      VM,       |
+           |             |  (UA,PD)->TA}  |  (UA,PD)->TA}  |  (UA,PD)->TA}  |
+           +-------------+----------------+----------------+----------------+
 
                   Figure 6: TEEP Implementation of Case 5
 5. IANA Considerations
