@@ -96,24 +96,25 @@ In this case, UA, TA and PD are bundled as a package. This package is bundled by
 
    As for informing Network Users to develop their applications and data, the mapping of UA, TA and implementations are shown in figure 2. 
 
-+-------------+--------------------------------------------------+
-|Package Model|                Case 1 (UA, TA, PD)               |
-+-------------+----------------+----------------+----------------+
-|             |  Confidential  |  Confidential  |                |
-|  Instance   |   Process in   |  Container in  |  Confidential  |
-|    Type     |   Physical or  |  Physical or   |       VM       |
-|             | Virtual Machine| Virtual Machine|                |
-+-------------+----------------+----------------+----------------+
-|  Hardware   |    TrustZone,  | TrustZone, SGX,|    SEV, CCA    |
-| Architecture|      SGX       |  SEV-SNP, CCA, |    TDX, CSV    |
-|             |                |    TDX, CSV    |                |
-+-------------+----------------+----------------+----------------+
-|             |{att TEEP Agent,|{att TEEP Agent,|{att TEEP Agent,|
-|    Load     |  (UA,TA,PD)->  |  (UA,TA,PD)->  |  (UA,TA,PD)->  |
-|  Sequence   |  Confidential  |  Confidential  |  Confidential  |
-|             |    Process,    |   Container,   |       VM,      |
-|             |    UA->REE}    |    UA->REE}    |    UA->REE}    |
-+-------------+----------------+----------------+----------------+
+
+           +-------------+--------------------------------------------------+
+           |Package Model|                Case 1 (UA, TA, PD)               |
+           +-------------+----------------+----------------+----------------+
+           |             |  Confidential  |  Confidential  |                |
+           |  Instance   |   Process in   |  Container in  |  Confidential  |
+           |    Type     |   Physical or  |  Physical or   |       VM       |
+           |             | Virtual Machine| Virtual Machine|                |
+           +-------------+----------------+----------------+----------------+
+           |  Hardware   |    TrustZone,  | TrustZone, SGX,|    SEV, CCA    |
+           | Architecture|      SGX       |  SEV-SNP, CCA, |    TDX, CSV    |
+           |             |                |    TDX, CSV    |                |
+           +-------------+----------------+----------------+----------------+
+           |             |{att TEEP Agent,|{att TEEP Agent,|{att TEEP Agent,|
+           |    Load     |  (UA,TA,PD)->  |  (UA,TA,PD)->  |  (UA,TA,PD)->  |
+           |  Sequence   |  Confidential  |  Confidential  |  Confidential  |
+           |             |    Process,    |   Container,   |       VM,      |
+           |             |    UA->REE}    |    UA->REE}    |    UA->REE}    |
+           +-------------+----------------+----------------+----------------+
 
                   Figure 2: TEEP Implementation of Case 1
 
