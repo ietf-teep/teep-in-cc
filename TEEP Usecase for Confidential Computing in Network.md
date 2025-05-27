@@ -1,5 +1,5 @@
            TEEP Usecase for Confidential Computing in Network
-              draft-yang-teep-usecase-for-cc-in-network-09
+              draft-yang-teep-usecase-for-cc-in-network-10
 
 Abstract
 
@@ -52,7 +52,7 @@ The following terms are used in this document.
 
 3.  Notional Architecture of using confidential computing in network
 
-   Figure 1 is the architecture of confidential computing in network. Two new components Network User and Network M/OC are introduced in this document. The connection between Network User and Network M/OC depends on the implementation of specific network. The connection between Network User and UA (Untrusted Application) or TA depends on the implementation of application. The connection between TAM, TEEP Broker and TEEP Agent refers to the TEEP protocol. Interactions of all components in this scenario are described in the Usecase section. One real-world example could be expressed by this architecture. A company wants to process some personal data in a confidential cloud by network, in which it provides data analysis algorithm as TA, personal data as PD, and data transfer server as UA. When facing how to use confidential cloud, this architecture could provide specific steps based on different hardware architecture by the following usecases.  
+   Figure 1 is the architecture of confidential computing in network. Two new components Network User and Network M/OC are introduced in this document. The connection between Network User and Network M/OC depends on the implementation of specific network, and the network user requests for confidential computing resource is out of teep scope. The connection between Network User and UA (Untrusted Application) or TA depends on the implementation of application. The connection between TAM, TEEP Broker and TEEP Agent refers to the TEEP protocol. Interactions of all components in this scenario are described in the Usecase section. One real-world example could be expressed by this architecture. A company wants to process some personal data in a confidential cloud by network, in which it provides data analysis algorithm as TA, personal data as PD, and data transfer server as UA. When facing how to use confidential cloud, this architecture could provide specific steps based on different hardware architecture by the following usecases.  
 
 
           +--------------------------------------+
@@ -310,7 +310,9 @@ Many thanks to Dave Thaler, Eric Voit, Hannes Tschofenig, the CCC TAC meeting an
               Confidential Computing Consortium, "Confidential
               Computing: Hardware-Based Trusted Execution for
               Applications and Data", January 2021,
-              <https://confidentialcomputing.io/white-papers-reports/>.
+              <https://confidentialcomputing.io/wp-content/uploads/sites/
+              10/2023/03/CCC_outreach_whitepaper_updated_November_2022.p
+              df/>.
 
    [CCC_Common_Terminology]
               Confidential Computing Consortium, "Common Terminology for
@@ -356,6 +358,10 @@ Many thanks to Dave Thaler, Eric Voit, Hannes Tschofenig, the CCC TAC meeting an
 
 Appendix A.  Submodules in TEEP Agent
 
+   Note: the appendix is used to explain submodules in TEEP Agent, 
+   the TEEP Agent does not “manage” submodules, it could contains
+   different submodules.
+   
    The original design of TEEP only includes TEEP Agent and TA inside
    TEE.  While in confidential computing implementation, other
    submodules may also be involved in the TEE.  In TEEP, these
@@ -395,13 +401,9 @@ Authors' Addresses
 
    Li Su
    China Mobile
-   32 Xuanwumen West Street, Xicheng District
-   Beijing
-   100053
-   China
    Email: suli@chinamobile.com
 
-   Chunchi Liu
+   Ting Pang
    Huawei
-   Email: liuchunchi@huawei.com
+   Email: pangting@huawei.com
 
