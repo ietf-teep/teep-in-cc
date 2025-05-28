@@ -358,9 +358,8 @@ Many thanks to Dave Thaler, Eric Voit, Hannes Tschofenig, the CCC TAC meeting an
 
 Appendix A.  Submodules in TEEP Agent
 
-   Note: the appendix is used to explain submodules in TEEP Agent, 
-   the TEEP Agent does not “manage” submodules, it could contains
-   different submodules.
+   Note: used to explain submodules in TEEP Agent, the TEEP Agent 
+   does not “manage” submodules, it could contains different submodules.
    
    The original design of TEEP only includes TEEP Agent and TA inside
    TEE.  While in confidential computing implementation, other
